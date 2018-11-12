@@ -1,0 +1,29 @@
+﻿@model testAdv.ViewModels.IndexViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.ngController = "mainApp";
+}
+
+<figure data-ng-controller="mainController as ctrl">
+    <div class="figure figure-max items">
+        <div class="chat-items">
+            <div class="chat-item-date">Дата</div>
+            <div class="chat-item-author">Автор</div>
+            <div class="chat-item-text">Сообщение</div>
+        </div>
+        <div class="chat-items" ng-repeat="item in items track by $index">
+            <div class="chat-item-date">{{item.DateStr}}</div>
+            <div class="chat-item-author">{{item.Author}}</div>
+            <div class="chat-item-text">{{item.Text}}</div>
+        </div>
+    </div>
+    <div class="figure figure-max sender">
+        <div class="sender-text">
+            @Html.TextArea("Text", null, new {@class = "", data_ng_model = "sender.Text", ng_keyup = "keyUp($event, sender)", type = "text", placeholder = "Новое сообщение"})
+        </div>
+        <div class="sender-button" >
+            <input type="submit" value="Отправить" ng-click="sendMessage(sender);" ng-keyUp />
+        </div>
+    </div>
+</figure>

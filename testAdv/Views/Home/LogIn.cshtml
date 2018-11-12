@@ -1,0 +1,27 @@
+﻿@model testAdv.ViewModels.LogInViewModels
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.ngController = "";
+}
+
+
+<figure class="figure">
+    <form action="LogIn" method="post" class="container-login" name="authForm">
+        <h3>Добро пожаловать</h3>
+        <hr />
+        <div class="container-login-string">
+            <div class="login-left">Как вас зовут</div>
+            <div class="login-right">
+                @Html.TextBox("Name", null, new { @class = "", required = "required", type = "text", placeholder = "Имя" })
+            </div>
+            <div class="login-error" style="@(Model.Valide ? "display:none" : "")">Такое имя уже существует, введите другое</div>
+        </div>
+        <div class="container-login-string">
+            <div class="login-left"></div>
+            <div class="login-right">
+                <input type="submit" value="Войти" />
+            </div>
+        </div>
+    </form>
+</figure>
